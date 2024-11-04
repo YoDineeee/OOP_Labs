@@ -1,0 +1,60 @@
+# Target Directories
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Output Files
+src/main/resources/output/*
+
+# Build Directories
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+dist/
+nbbuild/
+nbdist/
+
+# Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE Specific Ignored Files
+
+### IntelliJ IDEA ###
+.idea/
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ##
+/nbproject/private/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# Scala Specific Files
+.bloop/
+.metals/
+.vscode/
+.bsp/
+
+# Other Project Files
+tags
+nohup.out
+out
+.cache
+.sbtserver
+project/.sbtserver
+
+# Additional Project and Test Directories
+project/LABB0-build/
+test/
+
+# Eclipse and Other IDEs
+.classpath
+.project
+.settings
