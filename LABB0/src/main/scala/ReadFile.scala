@@ -1,35 +1,25 @@
-import play.api.libs.json._
 import scala.io.Source
-import java.io.{IOException, FileNotFoundException}
-import java.nio.file.{Files, Paths}
-
-case class Creatură(id: Int, isHumanoid: Option[Boolean], planet: Option[String], age: Option[Int], traits: List[String] = List())
-
+import play.api.libs.json.{Json, JsValue}
 
 class ReadFile {
 
-  implicit val creaturaReads: Reads[Creatură] = Json.reads[Creatură]
-
+  // Parses the JSON file and returns a list of Creatură instances
   def readJsonFile(filePath: String): List[Creatură] = {
-    // Check if the file exists
-    if (!Files.exists(Paths.get(filePath))) {
-      throw new FileNotFoundException(s"File not found: $filePath")
-    }
-
+    val source = Source.fromFile(filePath)
     try {
+      val jsonString = source.getLines.mkString
+      println(s"Read JSON String: $jsonString") // Debugging output
+      val json: JsValue = Json.parse(jsonString)
 
-      val jsonFile = Source.fromFile(filePath).getLines().mkString
-      val json: JsValue = Json.parse(jsonFile)
-
-
-      (json \ "data").validate[List[Creatură]] match {
-        case JsSuccess(creatures, _) => creatures
-        case JsError(errors) =>
-          throw new Exception("Failed to parse JSON: " + errors.mkString(", "))
-      }
+      // Convert JSON array to List[Creatură]
+      json.as[List[Creatură]] // This now works due to the implicit Reads
     } catch {
-      case e: IOException =>
-        throw new IOException(s"Error reading the file: ${e.getMessage}", e)
+      case e: Exception =>
+        println(s"Error processing JSON: ${e.getMessage}")
+        throw e
+    } finally {
+      source.close()
     }
   }
 }
+

@@ -1,19 +1,14 @@
-import scala.util.Try
-import java.io.IOException
+object Main extends App {
+  // Instantiate the ReadFile and JudgeRoom classes
+  val readFile = new ReadFile()
+  val judgeRoom = new JudgeRoom()
 
-object Main {
-  def main(args: Array[String]): Unit = {
-    val filePath = "src/main/resources/input.json"
-    val reader = new ReadFile()
+  // Path to your JSON file
+  val filePath = "src/main/resources/input.json" // Replace with the actual path to your JSON file
 
-    println(s"Attempting to read JSON file from path: $filePath")
+  // Read creatures from the JSON file
+  val creatures = readFile.readJsonFile(filePath)
 
-    Try {
-      val creatures: List[Creatură] = reader.readJsonFile(filePath)
-      creatures.foreach(println)
-    } recover {
-      case e: IOException => println(s"Error: ${e.getMessage}")
-      case e: Exception => println(s"An error occurred: ${e.getMessage}")
-    }
-  }
+  // Classify and store the creatures
+  judgeRoom.classifyAndStoreCreatures(creatures)
 }
