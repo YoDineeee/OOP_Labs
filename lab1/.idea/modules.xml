@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task2.iml" filepath="$PROJECT_DIR$/.idea/modules/Task2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Task2/.idea/modules/Task2.Task2-build.iml" filepath="$PROJECT_DIR$/Task2/.idea/modules/Task2.Task2-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task3.iml" filepath="$PROJECT_DIR$/.idea/modules/Task3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task3/.idea/modules/Task3.Task3-build.iml" filepath="$PROJECT_DIR$/Task3/.idea/modules/Task3.Task3-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lab1.iml" filepath="$PROJECT_DIR$/.idea/modules/lab1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lab1.lab1-build.iml" filepath="$PROJECT_DIR$/.idea/modules/lab1.lab1-build.iml" />
     </modules>
