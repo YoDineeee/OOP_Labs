@@ -3,7 +3,7 @@ import scala.collection.mutable.ListBuffer
 class Assistant(var assistantName: String) {
   private val assignedDisplays: ListBuffer[Display] = ListBuffer()
 
-  def assignDisplay(d: Display): Unit = {
+  def assignDisplay(d: Display): Unit= {
     assignedDisplays += d
   }
 
@@ -25,7 +25,9 @@ class Assistant(var assistantName: String) {
   }
 
   def buyDisplay(d: Display): Option[Display] = {
-    if (assignedDisplays.remove(d)) {
+    val index = assignedDisplays.indexOf(d)
+    if (index >= 0) {
+      assignedDisplays.remove(index)
       println(s"${d.getModel} has been bought and removed from the list.")
       Some(d)
     } else {
@@ -33,6 +35,7 @@ class Assistant(var assistantName: String) {
       None
     }
   }
+
 
   def getAssignedDisplays: List[Display] = assignedDisplays.toList
 }
